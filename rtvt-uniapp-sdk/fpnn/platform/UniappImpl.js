@@ -79,7 +79,8 @@ class UniappImpl {
 
 		if (this._socket) {
 
-	        return this._socket.readyState == WebSocket.CONNECTING;
+	        //return this._socket.readyState == WebSocket.CONNECTING;
+	        return this._socket.readyState == 0;
         }
 
         return false;
