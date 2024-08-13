@@ -98,4 +98,5 @@ class FPEvent {
     }
 }
 
-module.exports = FPEvent;
+//module.exports = FPEvent;
+export default FPEvent;

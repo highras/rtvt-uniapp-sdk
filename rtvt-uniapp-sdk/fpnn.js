@@ -18,7 +18,7 @@ import FPCallback from './fpnn/FPCallback';
 import FPProcessor from './fpnn/FPProcessor';
 import FPError from './fpnn/FPError';
 
-module.exports = {
+export {
 	FPClient,
 	FPConfig,
 	FPEvent,
@@ -28,3 +28,5 @@ module.exports = {
 	FPProcessor,
 	FPError,
 };
+
+export default FPClient;

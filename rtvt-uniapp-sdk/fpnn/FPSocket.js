@@ -185,4 +185,5 @@ function onError(err) {
     this.emit('error', err);
 }
 
-module.exports = FPSocket;
+//module.exports = FPSocket;
+export default FPSocket;

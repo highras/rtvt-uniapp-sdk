@@ -2,7 +2,9 @@
 
 //const Buffer = require('../libs/buffer').Buffer;
 
-import { Buffer } from '../libs/buffer';
+import Buffer  from '../libs/buffer';
+
+//import BufferNew from '../libs/BufferNew';
 
 const SDK_VERSION = '2.0.0';
 
@@ -128,4 +130,5 @@ class FPConfig {
 	}
 }
 
-module.exports = FPConfig;
+//module.exports = FPConfig;
+export default FPConfig;

@@ -79,12 +79,13 @@ class UniappImpl {
 
 		if (this._socket) {
 
-	        //return this._socket.readyState == WebSocket.CONNECTING;
-	        return this._socket.readyState == 0;
+	        // return this._socket.readyState == WebSocket.CONNECTING;
+			return this._socket.readyState == 0;
         }
 
         return false;
 	}
 }
 
-module.exports = UniappImpl;
+//module.exports = UniappImpl;
+export default UniappImpl;

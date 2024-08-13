@@ -19,4 +19,5 @@ class FPProcessor {
     }
 }
 
-module.exports = FPProcessor;
+//module.exports = FPProcessor;
+export default FPProcessor;

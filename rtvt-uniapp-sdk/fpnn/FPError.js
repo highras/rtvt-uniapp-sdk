@@ -14,4 +14,5 @@ FPError.prototype.toString = function() {
     return "code: " + this.code + " ex: " + this.message;
 }
 
-module.exports = FPError;
+//module.exports = FPError;
+export default FPError;

@@ -8,15 +8,18 @@
 
 'use strict'
 
-var base64 = require('./base64-js')
-var ieee754 = require('./ieee754')
+//var base64 = require('./base64-js')
+//var ieee754 = require('./ieee754')
 
-exports.Buffer = Buffer
-exports.SlowBuffer = SlowBuffer
-exports.INSPECT_MAX_BYTES = 50
+import base64 from './base64-js';
+import ieee754 from './ieee754';
+
+//exports.Buffer = Buffer
+//exports.SlowBuffer = SlowBuffer
+//exports.INSPECT_MAX_BYTES = 50
 
 var K_MAX_LENGTH = 0x7fffffff
-exports.kMaxLength = K_MAX_LENGTH
+//exports.kMaxLength = K_MAX_LENGTH
 
 /**
  * If `Buffer.TYPED_ARRAY_SUPPORT`:
@@ -1775,3 +1778,5 @@ function numberIsNaN (obj) {
   // For IE11 support
   return obj !== obj // eslint-disable-line no-self-compare
 }
+
+export default Buffer;

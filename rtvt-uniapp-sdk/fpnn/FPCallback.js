@@ -112,4 +112,5 @@ function cbRemove(key) {
     } 
 }
 
-module.exports = FPCallback
+//module.exports = FPCallback
+export default FPCallback;

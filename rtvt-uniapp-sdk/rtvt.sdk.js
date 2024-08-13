@@ -1,10 +1,7 @@
-//const fpnn = require('./fpnn.js');
-//const msgpack = require('./libs/msgpack.min.js');
-//const int64 = require('./libs/int64.min.js');
 
-import fpnn from './fpnn.js';
+import { FPClient, FPConfig, FPEvent, FPSocket, FPPackage, FPCallback, FPProcessor, FPError } from './fpnn.js';
 import msgpack from './libs/msgpack.min.js';
-import int64 from './libs/int64.min.js';
+import Int64BE from './libs/int64.min.js';
 
 const RTVT_SDK_VERSION = "1.0.4";
 
@@ -17,20 +14,20 @@ const RTVT_ERROR_CODE = {
 function isException(isAnswerErr, data) {
 
     if (!data) {
-        return new fpnn.FPError(fpnn.FPConfig.ERROR_CODE.FPNN_EC_PROTO_UNKNOWN_ERROR, Error('data is null'));
+        return new FPError(FPConfig.ERROR_CODE.FPNN_EC_PROTO_UNKNOWN_ERROR, Error('data is null'));
     }
 
     if (data instanceof Error) {
-        let errorCode = fpnn.FPConfig.ERROR_CODE.FPNN_EC_PROTO_UNKNOWN_ERROR;
+        let errorCode = FPConfig.ERROR_CODE.FPNN_EC_PROTO_UNKNOWN_ERROR;
         if (data.code !== undefined) {
             errorCode = data.code;
         }
-        return new fpnn.FPError(errorCode, data);
+        return new FPError(errorCode, data);
     }
 
     if (isAnswerErr) {
         if (data.hasOwnProperty('code') && data.hasOwnProperty('ex')) {
-            return new fpnn.FPError(data.code, new Error(data.ex));
+            return new FPError(data.code, new Error(data.ex));
         }
     }
 
@@ -42,7 +39,7 @@ function sendQuest(client, options, callback, timeout) {
     let self = this;
 
     if (!client) {
-        callback && callback(new fpnn.FPError(fpnn.FPConfig.ERROR_CODE.FPNN_EC_CORE_INVALID_CONNECTION, Error('invalid connection')), null);
+        callback && callback(new FPError(FPConfig.ERROR_CODE.FPNN_EC_CORE_INVALID_CONNECTION, Error('invalid connection')), null);
         return;
     }
 
@@ -95,7 +92,7 @@ function sendQuest(client, options, callback, timeout) {
 
 class RTVTStream {
     constructor(options) {
-        fpnn.FPEvent.assign(this);
+        FPEvent.assign(this);
         this._id = options.id;
         this._srcLang = options.srcLang;
         this._destLang = options.destLang;
@@ -137,7 +134,7 @@ class RTVTStream {
 class RTVTClient {
 
     constructor(options) {
-        fpnn.FPEvent.assign(this);
+        FPEvent.assign(this);
 
         this._endpoint = options.endpoint;
         this._pid = options.pid;
@@ -241,7 +238,7 @@ class RTVTClient {
             streamId: this._streamMap[stream._id]._streamID,
             seq: seq,
             data: data,
-            ts: new int64.Int64BE(parseInt('' + new Date().getTime())),
+            ts: new Int64BE(parseInt('' + new Date().getTime())),
         };
 
         let options = {
@@ -254,7 +251,7 @@ class RTVTClient {
                 })
             }),
 
-            ts: new int64.Int64BE(parseInt('' + new Date().getTime())),
+            ts: new Int64BE(parseInt('' + new Date().getTime())),
         };
         let self = this;
         let start = parseInt(new Date().getTime());
@@ -277,7 +274,7 @@ class RTVTClient {
     _login(token, ts, callback) {
         this._token = token;
         this._ts = ts;
-        this._client = new fpnn.FPClient({
+        this._client = new FPClient({
             endpoint: this._endpoint + '/service/websocket',
             autoReconnect: false,
             connectionTimeout: 10 * 1000
@@ -302,7 +299,7 @@ class RTVTClient {
             sendQuest.call(self, self._client, options, function(err, data) {
                 if (data && data.successed === true) {
                     self._canReconnect = true;
-                    callback && callback(true, fpnn.FPConfig.ERROR_CODE.FPNN_EC_OK);
+                    callback && callback(true, FPConfig.ERROR_CODE.FPNN_EC_OK);
                 } else {
                     self._canReconnect = false;
                     callback && callback(false, 800001);
@@ -410,7 +407,7 @@ class RTVTClient {
 
     onClose() {
         if (!this._canReconnect) {
-            this.emit('SessionClosed', fpnn.FPConfig.ERROR_CODE.FPNN_EC_CORE_CONNECTION_CLOSED);
+            this.emit('SessionClosed', FPConfig.ERROR_CODE.FPNN_EC_CORE_CONNECTION_CLOSED);
             return;
         }
 
@@ -485,8 +482,10 @@ class RTVTClient {
     }
 };
 
-module.exports = {
+export {
     RTVTClient,
 	RTVTStream,
 	RTVT_ERROR_CODE,
 };
+
+export default RTVTClient;

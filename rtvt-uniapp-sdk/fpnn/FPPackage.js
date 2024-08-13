@@ -338,4 +338,5 @@ function buildHeader(data, size) {
     return buf;
 }
 
-module.exports = FPPackage;
+//module.exports = FPPackage;
+export default FPPackage;

@@ -367,4 +367,5 @@ function checkHead(data) {
     return true;
 }
 
-module.exports = FPClient;
+//module.exports = FPClient;
+export default FPClient;
