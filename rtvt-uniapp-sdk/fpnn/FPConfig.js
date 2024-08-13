@@ -1,6 +1,8 @@
 'use strict'
 
-const Buffer = require('../libs/buffer').Buffer;
+//const Buffer = require('../libs/buffer').Buffer;
+
+import { Buffer } from '../libs/buffer';
 
 const SDK_VERSION = '2.0.0';
 

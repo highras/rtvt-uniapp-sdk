@@ -1,9 +1,12 @@
 'use strict'
 
-const FPConfig = require('./FPConfig');
-const FPEvent = require('./FPEvent');
-//const PlatFormImpl = require('./platform/BrowserImpl');
-const PlatFormImpl = require('./platform/UniappImpl');
+//const FPConfig = require('./FPConfig');
+//const FPEvent = require('./FPEvent');
+//const PlatFormImpl = require('./platform/UniappImpl');
+
+import FPConfig from './FPConfig';
+import FPEvent from './FPEvent';
+import PlatFormImpl from './platform/UniappImpl';
 
 class FPSocket {
 
@@ -91,7 +94,7 @@ class FPSocket {
         }
 
         this._connectTimeout = setTimeout(function() {
-try{
+
             let err = new Error('connect timeout!');
 
             if (self.isOpen) {
@@ -108,9 +111,8 @@ try{
             } 
 
             onError.call(self, err);
-            onClose.call(self); } catch (ex) {
-				console.log("nvnvnv");
-			}
+            onClose.call(self); 
+			
         }, this._timeout);
 
         this._platform.open(this._endpoint);

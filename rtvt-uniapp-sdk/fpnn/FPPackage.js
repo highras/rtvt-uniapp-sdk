@@ -1,6 +1,7 @@
 'use strict'
 
-const FPConfig = require('./FPConfig');
+//const FPConfig = require('./FPConfig');
+import FPConfig from './FPConfig';
 
 class FPPackage {
 

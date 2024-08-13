@@ -1,6 +1,7 @@
 'use strict'
 
-const FPEvent = require('./FPEvent');
+//const FPEvent = require('./FPEvent');
+import FPEvent from './FPEvent';
 
 class FPProcessor {
 

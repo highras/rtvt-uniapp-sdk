@@ -1,7 +1,10 @@
 'use strict'
 
-const FPConfig = require('./FPConfig');
-const FPError = require('./FPError');
+//const FPConfig = require('./FPConfig');
+//const FPError = require('./FPError');
+
+import FPConfig from './FPConfig';
+import FPError from './FPError';
 
 class FPCallback {
 
@@ -82,7 +85,7 @@ function cbExec(key, data) {
     }
 }
 
-function delayRemove(key) {
+async function delayRemove(key) {
 
     let self = this;
 

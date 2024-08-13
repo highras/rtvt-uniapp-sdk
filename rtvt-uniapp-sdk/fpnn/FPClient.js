@@ -1,12 +1,20 @@
 'use strict'
 
-const FPConfig = require('./FPConfig');
+/*const FPConfig = require('./FPConfig');
 const FPEvent = require('./FPEvent');
 const FPSocket = require('./FPSocket');
 const FPPackage = require('./FPPackage');
 const FPCallback = require('./FPCallback');
 const FPProcessor = require('./FPProcessor');
-const FPError = require('./FPError');
+const FPError = require('./FPError');*/
+
+import FPConfig from './FPConfig';
+import FPEvent from './FPEvent';
+import FPSocket from './FPSocket';
+import FPPackage from './FPPackage';
+import FPCallback from './FPCallback';
+import FPProcessor from './FPProcessor';
+import FPError from './FPError';
 
 class FPClient {
 

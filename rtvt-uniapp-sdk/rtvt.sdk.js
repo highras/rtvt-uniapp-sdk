@@ -1,8 +1,12 @@
-const fpnn = require('./fpnn.js');
-const msgpack = require('./libs/msgpack.min.js');
-const int64 = require('./libs/int64.min.js');
+//const fpnn = require('./fpnn.js');
+//const msgpack = require('./libs/msgpack.min.js');
+//const int64 = require('./libs/int64.min.js');
 
-const RTVT_SDK_VERSION = "1.0.3";
+import fpnn from './fpnn.js';
+import msgpack from './libs/msgpack.min.js';
+import int64 from './libs/int64.min.js';
+
+const RTVT_SDK_VERSION = "1.0.4";
 
 const RTVT_ERROR_CODE = {
     RTVT_EC_TOKEN_INVALID: 300001,
