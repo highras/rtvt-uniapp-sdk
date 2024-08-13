@@ -1,5 +1,10 @@
 # web-uniapp-sdk 使用文档 #
 
+#### 安装uniapp依赖 ####
+```html
+npm install buffer
+```
+
 #### 引入依赖库 ####
 ```html
 import fpnn from '../../rtvt-uniapp-sdk/fpnn.js';
