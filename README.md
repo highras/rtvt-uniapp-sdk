@@ -8,14 +8,14 @@ npm install buffer
 #### 引入依赖库 ####
 ```html
 import fpnn from '../../rtvt-uniapp-sdk/fpnn.js';
-import rtvt from '../../rtvt-uniapp-sdk/rtvt.sdk.js';
+import { RTVTClient } from '../../rtvt-uniapp-sdk/rtvt.sdk.js';
 ```
 
 #### 使用示例 ####
 
 ```javascript
 
-let rtvtClient = new rtvt.RTVTClient({
+let rtvtClient = new RTVTClient({
     endpoint: 'wss://rtvt.ilivedata.com:14002',  // endpoint由控制台获取
     pid: pid,   // pid由控制台获取
     uid: uid,  // uid
