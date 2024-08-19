@@ -3,6 +3,7 @@
 #### 安装uniapp依赖 ####
 ```html
 npm install buffer
+npm install msgpack-lite
 ```
 
 #### 引入依赖库 ####

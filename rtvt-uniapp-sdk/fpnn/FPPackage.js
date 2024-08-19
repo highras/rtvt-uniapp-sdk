@@ -2,6 +2,7 @@
 
 //const FPConfig = require('./FPConfig');
 import FPConfig from './FPConfig';
+import { Buffer } from 'buffer'
 
 class FPPackage {
 
@@ -122,7 +123,8 @@ class FPPackage {
 
         if (this.isMsgPack(data)) {
 
-            this.wpos += this.payload.copy(buf, this.wpos, 0);
+            //this.wpos += this.payload.copy(buf, this.wpos, 0);
+			this.wpos += Buffer.from(this.payload).copy(buf, this.wpos, 0);
         }
 
         return buf;
@@ -144,10 +146,10 @@ class FPPackage {
             let pbuf = FPConfig.BUFFER.from(data.payload)
             data.wpos += pbuf.copy(buf, data.wpos, 0);
         }
-
+		
         if (this.isMsgPack(data)) {
-
-            data.wpos += data.payload.copy(buf, data.wpos, 0);
+			data.wpos += Buffer.from(data.payload).copy(buf, data.wpos, 0);
+			
         }
 
         return buf; 
@@ -169,7 +171,8 @@ class FPPackage {
 
         if (this.isMsgPack(data)) {
 
-            data.wpos += data.payload.copy(buf, data.wpos, 0);
+            //data.wpos += data.payload.copy(buf, data.wpos, 0);
+			data.wpos += Buffer.from(data.payload).copy(buf, data.wpos, 0);
         }
 
         return buf;

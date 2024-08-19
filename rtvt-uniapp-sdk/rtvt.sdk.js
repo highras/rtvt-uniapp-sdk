@@ -1,7 +1,11 @@
 
 import { FPClient, FPConfig, FPEvent, FPSocket, FPPackage, FPCallback, FPProcessor, FPError } from './fpnn.js';
-import msgpack from './libs/msgpack.min.js';
+//import msgpack from './libs/msgpack.min.js';
 import Int64BE from './libs/int64.min.js';
+
+import msgpack from 'msgpack-lite';
+//var msgpack = require('msgpack-lite');
+//import Int64BE from './libs/int64.min.js';
 
 const RTVT_SDK_VERSION = "1.0.4";
 
