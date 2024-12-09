@@ -100,6 +100,7 @@ class RTVTStream {
         this._id = options.id;
         this._srcLang = options.srcLang;
         this._destLang = options.destLang;
+        this._srcAltLang = options.srcAltLang;
         this._asrResult = options.asrResult;
         this._transResult = options.transResult,
         this._asrTempResult = options.asrTempResult,
@@ -180,7 +181,7 @@ class RTVTClient {
         }
     }
 
-    createStream(srcLang, destLang, asrResult, tempResult, transResult, callback, oldID) {
+    createStream(srcLang, destLang, srcAltLang, asrResult, tempResult, transResult, callback, oldID) {
         let options = {
             flag: 1,
             method: 'voiceStart',
@@ -190,6 +191,7 @@ class RTVTClient {
                 transResult: transResult,
                 srcLanguage: srcLang,
                 destLanguage: destLang,
+                srcAltLanguage: srcAltLang
             }),
         };
 
@@ -200,6 +202,7 @@ class RTVTClient {
                 var initOptions = {
                     srcLang: srcLang,
                     destLang: destLang,
+                    srcAltLang: srcAltLang,
                     asrResult: asrResult,
                     transResult: transResult,
                     asrTempResult: tempResult,
@@ -435,7 +438,7 @@ class RTVTClient {
                         var recoverNum = 0;
                         for (var i in self._streamMap) {
                             let oldStream = self._streamMap[i];
-                            self.createStream(oldStream._srcLang, oldStream._destLang, oldStream._asrResult, oldStream._asrTempResult, oldStream._transResult, function(stream, errorCode) {
+                            self.createStream(oldStream._srcLang, oldStream._destLang, oldStream._srcAltLang, oldStream._asrResult, oldStream._asrTempResult, oldStream._transResult, function(stream, errorCode) {
                                 if (stream === undefined || stream === null) {
                                     self.emit('ErrorRecorder', "recover stream error: " + errorCode);
                                     return;

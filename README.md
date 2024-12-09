@@ -44,15 +44,16 @@ rtvtClient.login(token, ts, function(ok, errorCode) {
     }
 
     /*
-        创建流, createStream(srcLang, destLang, asrResult, tempResult, transResult, callback)
+        创建流, createStream(srcLang, destLang, srcAltLang, asrResult, tempResult, transResult, callback)
             srcLang: 源语言
             destLang: 翻译目标语言
+            srcAltLang: 参考源语言列表，如果不为空，流的前3s数据将用于语种识别
             asrResult: 是否需要识别最终结果
             tempResult: 是否需要识别临时结果
             transResult: 是否需要翻译最终结果
             callback: 结果回调
     */
-    rtvtClient.createStream("zh", "en", true, true, true, function(stream, errorCode) {
+    rtvtClient.createStream("zh", "en", [], true, true, true, function(stream, errorCode) {
         if (stream == null) {
             console.log("create stream fail: " + errorCode);
             return;
